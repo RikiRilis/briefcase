@@ -10,7 +10,9 @@
     "build:href": "ng build --base-href ./",
     "delete:docs": "del docs",
     "copy:dist": "copyfiles dist/briefcase/browser/* ./docs -f",
-    "build:git": "npm run delete:docs & npm run build:href & npm run copy:dist"
+    "copy:assets": "copyfiles dist/briefcase/browser/assets/* ./docs/assets -f",
+    "copy:docs": "copyfiles dist/briefcase/browser/assets/docs/* ./docs/assets/docs -f",
+    "build:git": "npm run delete:docs & npm run build:href & npm run copy:dist & npm run copy:assets & npm run copy:docs"
   },
   "private": true,
   "dependencies": {
