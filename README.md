@@ -1,4 +1,9 @@
-# Briefcase
+# Rikelvi's Briefcase
+
+## Deployed
+This briefcase (`portfolio`) was deployed in Vercel. [==> Visit <==](https://briefcase.rilisentertainment.xyz)
+
+## Technologies
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.3.
 
