@@ -38,6 +38,6 @@ export class ProjectsCardComponent {
   constructor(private router: Router) { }
 
   projectNavigation(index: number): void {
-    this.router.navigate([`/portfolio/projects/', ${this.projects[index].title.replace(' ', '-').toLowerCase}`], { queryParams: { index: index } })
+    this.router.navigate([`/portfolio/projects/${this.projects[index].title.replace(' ', '-').toLowerCase}`], { queryParams: { index: index } })
   }
 }
