@@ -1,6 +1,4 @@
-<div *ngFor="let project of projects; let i = index"
-  [routerLink]="['/portfolio/projects/', project.title.replace(' ', '-') | lowercase]"
-  routerLinkActive="router-link-active"
+<div *ngFor="let project of projects; let i = index" (click)="projectNavigation(i)"
   class="project-card relative flex gap-2 flex-col w-full h-64 sm:h-auto overflow-hidden bg-slate-400 bg-opacity-5 backdrop-blur-xl shadow-lg shadow-slate-950 rounded-xl cursor-pointer lg:last:col-span-3">
   <span
     class="detail-text md:-top-full absolute right-0 top-0 p-2 transition-all font-semibold bg-gradient-to-bl from-slate-950 to-transparent duration-200 ease-in-out rounded-bl-xl">Click

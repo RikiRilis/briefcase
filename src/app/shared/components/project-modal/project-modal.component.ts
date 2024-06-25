@@ -36,7 +36,6 @@ export class ProjectModalComponent implements OnInit {
     this.route.queryParamMap.subscribe(params => {
       this.index = Number(params.get('index'));
       this.project = ProjectsService[this.index]
-
     });
   }
 
