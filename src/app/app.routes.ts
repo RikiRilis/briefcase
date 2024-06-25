@@ -1,21 +1,17 @@
 import { Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { ProjectModalComponent } from './shared/components/project-modal/project-modal.component';
-import { BlogComponent } from './blog/components/blog/blog.component';
-import { PortfolioComponent } from './portfolio/components/portfolio/portfolio.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: AppComponent
+    loadChildren: () => import('./web/web-routing.routes').then(m => m.routes)
   },
   {
     path: 'portfolio',
-    component: PortfolioComponent
+    loadChildren: () => import('./portfolio/portfolio-routing.routes').then(m => m.routes)
   },
   {
     path: 'blog',
-    component: BlogComponent
+    loadChildren: () => import('./blog/blog-routing.routes').then(m => m.routes)
   },
   {
     path: '**',

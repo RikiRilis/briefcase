@@ -1,0 +1,25 @@
+<div *ngFor="let project of projects; let i = index"
+  [routerLink]="['/portfolio/projects/', project.title.replace(' ', '-') | lowercase]"
+  routerLinkActive="router-link-active"
+  class="project-card relative flex gap-2 flex-col w-full h-64 sm:h-auto overflow-hidden bg-slate-400 bg-opacity-5 backdrop-blur-xl shadow-lg shadow-slate-950 rounded-xl cursor-pointer lg:last:col-span-3">
+  <span
+    class="detail-text md:-top-full absolute right-0 top-0 p-2 transition-all font-semibold bg-gradient-to-bl from-slate-950 to-transparent duration-200 ease-in-out rounded-bl-xl">Click
+    for details</span>
+
+  <img loading="lazy" decoding="async" [src]="project.imgUrl" [alt]="project.description"
+    class="mask-image w-full absolute sm:relative aspect-video -z-10 opacity-50 sm:opacity-100 transition-transform duration-300">
+
+  <div
+    class="flex flex-col justify-end sm:justify-normal h-full pt-20 sm:pt-0 px-2 pb-2 gap-2 bg-gradient-to-b from-transparent to-slate-950">
+    <span class="font-bold text-lg text-slate-200">{{project.title}}</span>
+
+    <div class="flex flex-row flex-wrap gap-2">
+      <div *ngFor="let tecnologies of project.tecnologies"
+        class="w-fit h-fit flex flex-row items-center justify-center px-2 gap-2 rounded-xl bg-cyan-950 text-cyan-600">
+        <h5 class="text-xs sm:text-sm text-cyan-600 font-bold">{{tecnologies}}</h5>
+      </div>
+    </div>
+
+    <p class="hidden sm:block text-slate-400">{{project.description}}</p>
+  </div>
+</div>

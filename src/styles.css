@@ -6,6 +6,7 @@
 
 html, body {
   scroll-behavior: smooth;
+  background: linear-gradient(to bottom, rgb(2, 6, 23), rgb(8, 51, 68)) no-repeat;
 }
 
 ::-webkit-scrollbar-thumb {

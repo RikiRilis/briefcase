@@ -13,6 +13,7 @@ import { DOCUMENT, CommonModule } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   public scrolled: boolean = false;
+  public title: string = 'Android & Web Developer | Rikelvi Capellán García';
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 

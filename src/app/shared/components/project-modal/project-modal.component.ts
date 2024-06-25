@@ -1,11 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule, Location } from '@angular/common';
 import { Projects } from '../../../portfolio/interfaces/projects.interface';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ProjectsService } from '../../../portfolio/services/projects.service';
 
 @Component({
   selector: 'shared-project-modal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './project-modal.component.html',
   styles: `
     #project-modal {
@@ -17,8 +19,9 @@ import { Projects } from '../../../portfolio/interfaces/projects.interface';
     }
   `
 })
-export class ProjectModalComponent {
-  @Input() public project: Projects = {
+export class ProjectModalComponent implements OnInit {
+  public index?: number;
+  public project: Projects = {
     title: '',
     description: '',
     imgUrl: '',
@@ -26,9 +29,18 @@ export class ProjectModalComponent {
     tecnologies: [],
     gitCodeUrl: ''
   };
-  @Output() public closeModalEvent: EventEmitter<boolean> = new EventEmitter();
 
-  closeModal(): void {
-    this.closeModalEvent.emit(true);
+  constructor(private location: Location, private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.route.queryParamMap.subscribe(params => {
+      this.index = Number(params.get('index'));
+      this.project = ProjectsService[this.index]
+
+    });
+  }
+
+  closePage(): void {
+    this.location.back();
   }
 }

@@ -1,6 +1,6 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { Component, Inject, Renderer2 } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'shared-header',
@@ -60,10 +60,10 @@ import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/rout
 export class HeaderComponent {
   public mobileMenuShown: boolean = false;
   public currentUrl: string = '';
+  public title?: string;
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute,
     @Inject(DOCUMENT)
     private document: Document,
     protected renderer: Renderer2) { }
@@ -71,7 +71,13 @@ export class HeaderComponent {
   ngOnInit() {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
-        this.currentUrl = this.router.url.replace('/', '').split('#')[0];
+        this.currentUrl = this.router.url.replace('/', ' ').split('#')[0];
+        if (this.currentUrl === ' ') { this.title = 'Web'; return; };
+        if (this.currentUrl.includes('/')) {
+          this.title = `${this.currentUrl.split('/')[1]} - ${this.currentUrl.split('/')[2].replace('-', ' ')}`;
+        } else {
+          this.title = this.currentUrl;
+        }
       }
     });
   }

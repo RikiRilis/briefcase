@@ -1,12 +1,13 @@
 <div id="project-modal"
-  class="flex flex-col items-center top-0 right-0 fixed w-full h-full z-50 bg-slate-400 bg-opacity-5 backdrop-blur-xl animate__animated animate__fadeIn">
+  class="flex flex-col items-center top-0 right-0 fixed w-full h-full z-50 bg-gradient-to-b from-slate-950 to-cyan-950 backdrop-blur-xl">
   <div class="relative flex justify-center items-start w-full h-32 bg-gradient-to-t from-transparent to-slate-950">
-    <img class="mask-image absolute -z-10 top-0 left-0 w-full aspect-video opacity-50 blur-sm" [src]="project.imgUrl"
+    <img loading="lazy" decoding="async"
+      class="mask-image absolute -z-10 top-0 left-0 w-full aspect-video opacity-50 blur-sm" [src]="project.imgUrl"
       [alt]="project.description">
     <div class="my-4 w-11/12 sm:w-3/4 md:w-2/4 flex flex-row items-center justify-between">
       <h2 class="font-bold text-3xl sm:text-4xl sm:text-center text-slate-200">{{project.title}}</h2>
 
-      <svg (click)="closeModal()"
+      <svg (click)="closePage()"
         class="text-slate-400 hover:text-slate-200 inline-block hover:scale-90 transition-all cursor-pointer" width="30"
         height="30" viewBox="0 0 24 24" fill="currentColor">
         <path
@@ -17,7 +18,7 @@
   </div>
 
   <div
-    class="flex flex-col gap-10 w-11/12 sm:w-3/4 md:w-2/4 h-full rounded-xl bg-gradient-to-t from-transparent to-slate-950 p-4 mt-1 overflow-y-auto animate__animated animate__fadeIn">
+    class="flex flex-col gap-10 w-11/12 sm:w-3/4 md:w-2/4 h-full rounded-xl bg-gradient-to-t from-transparent to-slate-950 p-4 mt-1 overflow-y-auto animate__animated animate__fadeInUp">
     <div class="flex flex-col gap-4 w-full">
       <h1 class="text-lg sm:text-xl sm:text-center text-slate-200">
         <strong>Description</strong>
@@ -41,8 +42,9 @@
 
     <div class="flex flex-row justify-center gap-2 h-fit w-full">
       <a [href]="project.projectUrl"
-      class="flex flex-row justify-center items-center gap-2 bg-cyan-600 hover:bg-transparent text-slate-200 hover:text-cyan-600 border border-transparent hover:border-cyan-600 transition-colors mt-4 sm:mt-0 w-auto py-2 px-3 rounded-xl text-lg font-bold">
-        <svg class="w-5 h-5" width="800px" height="800px" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" role="img">
+        class="flex flex-row justify-center items-center gap-2 bg-cyan-600 hover:bg-transparent text-slate-200 hover:text-cyan-600 border border-transparent hover:border-cyan-600 transition-colors mt-4 sm:mt-0 w-auto py-2 px-3 rounded-xl text-lg font-bold">
+        <svg class="w-5 h-5" width="800px" height="800px" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" fill="none" role="img">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M10 14l11 -11"></path>
           <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"></path>
@@ -51,8 +53,9 @@
       </a>
 
       <a [href]="project.gitCodeUrl"
-      class="flex flex-row justify-center items-center gap-2 bg-slate-950 text-slate-400 hover:text-slate-200 border border-transparent transition-colors mt-4 sm:mt-0 w-auto py-2 px-3 rounded-xl text-lg font-bold">
-        <svg class="w-5 h-5" width="800px" height="800px" viewBox="0 0 20 20" version="1.1" role="img" aria-label="GitHub brand logo">
+        class="flex flex-row justify-center items-center gap-2 bg-slate-950 text-slate-400 hover:text-slate-200 border border-transparent transition-colors mt-4 sm:mt-0 w-auto py-2 px-3 rounded-xl text-lg font-bold">
+        <svg class="w-5 h-5" width="800px" height="800px" viewBox="0 0 20 20" version="1.1" role="img"
+          aria-label="GitHub brand logo">
           <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <g id="Dribbble-Light-Preview" transform="translate(-140.000000, -7559.000000)" fill="currentColor">
               <g id="icons" transform="translate(56.000000, 160.000000)">

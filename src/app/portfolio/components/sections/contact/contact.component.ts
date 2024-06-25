@@ -41,7 +41,7 @@ export class ContactComponent {
   }
 
   sendMail(): void {
-    if (this.formGroup.value.from_email === '' || this.formGroup.value.to_name === '' || this.formGroup.value.from_email === '') return;
+    if (this.formGroup.value.from_email.trim() === 'rikelvicapellan15@gmail.com' || this.formGroup.value.from_email.trim() === '' || this.formGroup.value.to_name.trim() === '' || this.formGroup.value.message.trim() === '') return;
 
     emailjs.init({
       publicKey: 'sBTAHA5e6bTr3L4lD',
@@ -53,11 +53,11 @@ export class ContactComponent {
     });
 
     emailjs.send('service_q4ed9v6', 'template_yv5sx76', {
-      from_name: this.formGroup.value.from_name,
-      to_name: this.formGroup.value.to_name,
-      from_email: this.formGroup.value.from_email,
-      subject: this.formGroup.value.subject,
-      message: this.formGroup.value.message
+      from_name: this.formGroup.value.from_name.trim(),
+      to_name: this.formGroup.value.to_name.trim(),
+      from_email: this.formGroup.value.from_email.trim(),
+      subject: this.formGroup.value.subject.trim(),
+      message: this.formGroup.value.message.trim()
     });
 
     this.formGroup.reset({
