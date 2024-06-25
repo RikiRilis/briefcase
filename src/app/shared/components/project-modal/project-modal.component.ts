@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Projects } from '../../../sections/interfaces/projects.interface';
 import { CommonModule } from '@angular/common';
+import { Projects } from '../../../portfolio/interfaces/projects.interface';
 
 @Component({
   selector: 'shared-project-modal',

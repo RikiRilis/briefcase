@@ -1,12 +1,13 @@
 import { Component, Inject, Renderer2 } from '@angular/core';
-import { Projects } from '../../interfaces/projects.interface';
+import { Projects } from '../../../interfaces/projects.interface';
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { ProjectModalComponent } from '../../../shared/components/project-modal/project-modal.component';
+import { ProjectModalComponent } from '../../../../shared/components/project-modal/project-modal.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'sections-projects',
   standalone: true,
-  imports: [CommonModule, ProjectModalComponent],
+  imports: [CommonModule, ProjectModalComponent, RouterLink],
   templateUrl: './projects.component.html',
   styles: `
     .mask-image {
@@ -66,6 +67,7 @@ export class ProjectsComponent {
     tecnologies: [],
     gitCodeUrl: ''
   };
+  public currentTecnology?: string;
 
   constructor(
     @Inject(DOCUMENT)
@@ -82,5 +84,13 @@ export class ProjectsComponent {
   closeProject(): void {
     this.projectDetailModal = false;
     this.renderer.removeStyle(this.document.body, 'overflow');
+  }
+
+  onMouseEnterTecnology(tecnology: string): void {
+    this.currentTecnology = tecnology;
+  }
+
+  onMouseLeaveTecnology(): void {
+    this.currentTecnology = '';
   }
 }

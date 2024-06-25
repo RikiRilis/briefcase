@@ -1,10 +1,11 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { Component, Inject, Renderer2 } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'shared-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './header.component.html',
   styles: `
     #check {
@@ -58,12 +59,22 @@ import { Component, Inject, Renderer2 } from '@angular/core';
 })
 export class HeaderComponent {
   public mobileMenuShown: boolean = false;
+  public currentUrl: string = '';
 
   constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
     @Inject(DOCUMENT)
     private document: Document,
-    protected renderer: Renderer2
-  ) { }
+    protected renderer: Renderer2) { }
+
+  ngOnInit() {
+    this.router.events.subscribe((event: any) => {
+      if (event instanceof NavigationEnd) {
+        this.currentUrl = this.router.url.replace('/', '').split('#')[0];
+      }
+    });
+  }
 
   menuCheckChange(): void {
     this.mobileMenuShown = !this.mobileMenuShown;

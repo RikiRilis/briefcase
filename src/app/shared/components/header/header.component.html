@@ -1,6 +1,6 @@
 <header
   class="flex flex-row items-center justify-between bg-slate-400 bg-opacity-5 backdrop-blur-xl shadow-lg shadow-slate-950 my-4 px-4 w-11/12 sm:w-auto gap-x-6 h-auto rounded-2xl overflow-hidden fixed z-20">
-  <a href="https://briefcase.rilisentertainment.xyz"
+  <a href="https://rikirilis.com/blog"
     aria-label="Rikelvi's RikiRilis brand logo will open in a new window" class="w-12 my-2 text-cyan-600 inline-block hover:scale-110 motion-safe:transition
   motion-reduce:hover:scale-100">
     <svg viewBox="0 0 899.68 579.05"
@@ -15,21 +15,35 @@
   <ul class="hidden sm:flex flex-row justify-center items-center text-center font-semibold text-slate-400">
     <li
       class="transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 hover:cursor-pointer select-none">
-      <a href="#about" class="p-3 w-full h-full inline-block">
+      <a [routerLink]="['/blog']" routerLinkActive="router-link-active" class="p-3 w-full h-full inline-block">
+        Blog
+      </a>
+    </li>
+    <li class="bg-gradient-to-t from-transparent via-slate-600 to-transparent w-px h-6"></li>
+    <li
+      class="transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 hover:cursor-pointer select-none">
+      <a [routerLink]="['/portfolio']" routerLinkActive="router-link-active" class="p-3 w-full h-full inline-block">
+        Portfolio
+      </a>
+    </li>
+    <li class="bg-gradient-to-t from-transparent via-slate-600 to-transparent w-px h-6"></li>
+    <li
+      class="transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 hover:cursor-pointer select-none">
+      <a href="portfolio#about" class="p-3 w-full h-full inline-block">
         About
       </a>
     </li>
     <li class="bg-gradient-to-t from-transparent via-slate-600 to-transparent w-px h-6"></li>
     <li
       class="transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 hover:cursor-pointer select-none">
-      <a href="#projects" class="p-3 w-full h-full inline-block">
+      <a [href]="currentUrl + '#projects'" class="p-3 w-full h-full inline-block">
         Projects
       </a>
     </li>
     <li class="bg-gradient-to-t from-transparent via-slate-600 to-transparent w-px h-6"></li>
     <li
       class="transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 hover:cursor-pointer select-none">
-      <a href="#contact" class="p-3 w-full h-full inline-block">
+      <a [href]="currentUrl + '#contact'" class="p-3 w-full h-full inline-block">
         Contact
       </a>
     </li>
@@ -43,28 +57,41 @@
   </label>
 </header>
 
-<div *ngIf="mobileMenuShown"
-  class="w-full h-full flex justify-center z-10 backdrop-blur-2xl shadow-lg sm:hidden fixed">
+<div *ngIf="mobileMenuShown" class="w-full h-full flex justify-center z-10 backdrop-blur-2xl shadow-lg sm:hidden fixed">
   <div [ngClass]="mobileMenuShown ? 'animate__slideInDown' : 'animate__slideOutUp'"
     class="w-11/12 h-auto my-4 py-16 relative bg-slate-400 bg-opacity-10 shadow-slate-950 rounded-2xl overflow-hidden animate__animated  animate__faster">
     <ul class="flex flex-col h-full justify-center items-center text-center font-semibold text-slate-400">
       <li
+      class="w-full transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 hover:cursor-pointer select-none">
+        <a [routerLink]="['/blog']" routerLinkActive="router-link-active" class="p-3 w-full h-full inline-block" (click)="menuCheckChange()">
+          Blog
+        </a>
+      </li>
+      <li class="bg-gradient-to-l from-transparent via-slate-600 to-transparent w-11/12 h-px"></li>
+      <li
+      class="w-full transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 hover:cursor-pointer select-none">
+        <a [routerLink]="['/portfolio']" routerLinkActive="router-link-active" class="p-3 w-full h-full inline-block" (click)="menuCheckChange()">
+          Portfolio
+        </a>
+      </li>
+      <li class="bg-gradient-to-l from-transparent via-slate-600 to-transparent w-11/12 h-px"></li>
+      <li
         class="w-full transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 hover:cursor-pointer select-none">
-        <a href="#about" class="p-3 w-full h-full inline-block" (click)="menuCheckChange()">
+        <a href="portfolio#about" class="p-3 w-full h-full inline-block" (click)="menuCheckChange()">
           About
         </a>
       </li>
       <li class="bg-gradient-to-l from-transparent via-slate-600 to-transparent w-11/12 h-px"></li>
       <li
         class="w-full transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 hover:cursor-pointer select-none">
-        <a href="#projects" class="p-3 w-full h-full inline-block" (click)="menuCheckChange()">
+        <a [href]="currentUrl + '#projects'" class="p-3 w-full h-full inline-block" (click)="menuCheckChange()">
           Projects
         </a>
       </li>
       <li class="bg-gradient-to-l from-transparent via-slate-600 to-transparent w-11/12 h-px"></li>
       <li
         class="w-full transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 hover:cursor-pointer select-none">
-        <a href="#contact" class="p-3 w-full h-full inline-block" (click)="menuCheckChange()">
+        <a [href]="currentUrl + '#contact'" class="p-3 w-full h-full inline-block" (click)="menuCheckChange()">
           Contact
         </a>
       </li>
