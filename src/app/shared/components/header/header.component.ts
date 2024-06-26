@@ -60,7 +60,7 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 export class HeaderComponent {
   public mobileMenuShown: boolean = false;
   public currentUrl: string = '';
-  public title?: string;
+  public title: string = 'Welcome';
 
   constructor(
     private router: Router,
@@ -74,7 +74,9 @@ export class HeaderComponent {
         this.currentUrl = this.router.url.replace('/', ' ').split('#')[0];
         if (this.currentUrl === ' ') { this.title = 'Web'; return; };
         if (this.currentUrl.includes('/')) {
-          this.title = `${this.currentUrl.split('/')[1]} - ${this.currentUrl.split('/')[2].replace('-', ' ')}`;
+          this.title = `${this.currentUrl.split('/')[0]} - ${this.currentUrl.split('/')[2].replace('-', ' ')}`;
+          if (this.currentUrl.includes('?'))
+            this.title = `${this.currentUrl.split('/')[0].split('?')[0]} - ${this.currentUrl.split('/')[2].replace('-', ' ').split('?')[0]}`
         } else {
           this.title = this.currentUrl;
         }

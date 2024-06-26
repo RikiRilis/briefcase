@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { Projects } from '../../../portfolio/interfaces/projects.interface';
+import { Projects } from '../../interfaces/projects.interface';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ProjectsService } from '../../../portfolio/services/projects.service';
 

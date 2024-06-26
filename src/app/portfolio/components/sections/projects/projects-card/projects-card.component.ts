@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Projects } from '../../../../interfaces/projects.interface';
+import { Projects } from '../../../../../shared/interfaces/projects.interface';
 import { ProjectsService } from '../../../../services/projects.service';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -25,19 +25,10 @@ import { CommonModule } from '@angular/common';
 })
 export class ProjectsCardComponent {
   public projects: Projects[] = ProjectsService;
-  public projectDetailModal: boolean = false;
-  public currentProject: Projects = {
-    title: '',
-    description: '',
-    imgUrl: '',
-    projectUrl: '',
-    tecnologies: [],
-    gitCodeUrl: ''
-  };
 
   constructor(private router: Router) { }
 
   projectNavigation(index: number): void {
-    this.router.navigate([`/portfolio/projects/${this.projects[index].title.replace(' ', '-').toLowerCase}`], { queryParams: { index: index } })
+    this.router.navigate([`/portfolio/projects/${this.projects[index].title.replace(' ', '-').toLowerCase()}`], { queryParams: { index: index } })
   }
 }
