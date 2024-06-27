@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Projects } from '../../../../../shared/interfaces/projects.interface';
-import { ProjectsService } from '../../../../services/projects.service';
+import { Projects } from '../../interfaces/projects.interface';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ProjectsService } from '../../services/projects.service';
 
 @Component({
   selector: 'projects-projects-card',
@@ -24,11 +24,16 @@ import { CommonModule } from '@angular/common';
   `
 })
 export class ProjectsCardComponent {
-  public projects: Projects[] = ProjectsService;
+  public projects: Projects[] = this.projectsService.getProjets().slice(0, 4);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private projectsService: ProjectsService) { }
 
   projectNavigation(index: number): void {
-    this.router.navigate([`/portfolio/projects/${this.projects[index].title.replace(' ', '-').toLowerCase()}`], { queryParams: { index: index } })
+    this.router.navigate(
+      [`projects/details/${this.projects[index].title.replace(' ', '-').toLowerCase()}`],
+      {
+        queryParams: { id: this.projects[index].id, prop: index }
+      }
+    )
   }
 }

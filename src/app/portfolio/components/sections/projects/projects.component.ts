@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProjectModalComponent } from '../../../../shared/components/project-modal/project-modal.component';
+import { ProjectModalComponent } from '../../../../shared/pages/project-modal/project-modal.component';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { TecnologiesComponent } from './tecnologies/tecnologies.component';
-import { ProjectsCardComponent } from './projects-card/projects-card.component';
+import { ProjectsCardComponent } from '../../../../shared/components/projects-card/projects-card.component';
 
 @Component({
   selector: 'sections-projects',

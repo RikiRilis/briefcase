@@ -1,10 +1,11 @@
-<div *ngFor="let project of projects; let i = index" (click)="projectNavigation(i)"
+@for (project of projects; track project.id; let i = $index) {
+<div (click)="projectNavigation(i)"
   class="project-card relative flex gap-2 flex-col w-full h-64 sm:h-auto overflow-hidden bg-slate-400 bg-opacity-5 backdrop-blur-xl shadow-lg shadow-slate-950 rounded-xl cursor-pointer lg:last:col-span-3">
   <span
     class="detail-text md:-top-full absolute right-0 top-0 p-2 transition-all font-semibold bg-gradient-to-bl from-slate-950 to-transparent duration-200 ease-in-out rounded-bl-xl">Click
     for details</span>
 
-  <img loading="lazy" decoding="async" [src]="project.imgUrl" [alt]="project.description"
+  <img [src]="project.imgUrl" [alt]="project.description" width="1200" height="630" decoding="async"
     class="mask-image w-full absolute sm:relative aspect-video -z-10 opacity-50 sm:opacity-100 transition-transform duration-300">
 
   <div
@@ -21,3 +22,4 @@
     <p class="hidden sm:block text-slate-400">{{project.description}}</p>
   </div>
 </div>
+}

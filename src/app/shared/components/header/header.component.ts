@@ -1,5 +1,5 @@
-import { CommonModule, DOCUMENT } from '@angular/common';
-import { Component, Inject, Renderer2 } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -57,35 +57,25 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 }
   `
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   public mobileMenuShown: boolean = false;
   public currentUrl: string = '';
   public title: string = 'Welcome';
 
-  constructor(
-    private router: Router,
-    @Inject(DOCUMENT)
-    private document: Document,
-    protected renderer: Renderer2) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    this.currentUrl = this.router.url.replace('/', '').split('#')[0];
+
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
-        this.currentUrl = this.router.url.replace('/', ' ').split('#')[0];
-        if (this.currentUrl === ' ') { this.title = 'Web'; return; };
-        if (this.currentUrl.includes('/')) {
-          this.title = `${this.currentUrl.split('/')[0]} - ${this.currentUrl.split('/')[2].replace('-', ' ')}`;
-          if (this.currentUrl.includes('?'))
-            this.title = `${this.currentUrl.split('/')[0].split('?')[0]} - ${this.currentUrl.split('/')[2].replace('-', ' ').split('?')[0]}`
-        } else {
-          this.title = this.currentUrl;
-        }
+        this.currentUrl = this.router.url.replace('/', '').split('#')[0];
       }
     });
   }
 
   menuCheckChange(): void {
     this.mobileMenuShown = !this.mobileMenuShown;
-    this.mobileMenuShown === true ? this.renderer.setStyle(this.document.body, 'overflow', 'hidden') : this.renderer.removeStyle(this.document.body, 'overflow');
+    this.mobileMenuShown === true ? document.body.classList.add('overflow-hidden') : document.body.classList.remove('overflow-hidden');
   }
 }

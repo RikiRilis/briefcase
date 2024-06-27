@@ -1,24 +1,15 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { DOCUMENT, CommonModule } from '@angular/common';
+import { ScrollTopComponent } from './shared/components/scroll-top/scroll-top.component';
+import { LoadingPageComponent } from './shared/pages/loading-page/loading-page.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FooterComponent, HeaderComponent, RouterLink],
+  imports: [RouterOutlet, FooterComponent, HeaderComponent, RouterLink, ScrollTopComponent, LoadingPageComponent],
   templateUrl: './app.component.html',
   styles: ``
 })
-export class AppComponent implements OnInit {
-  public scrolled: boolean = false;
-
-  constructor(@Inject(DOCUMENT) private document: Document) { }
-
-  ngOnInit(): void {
-    this.document.addEventListener('scroll', () => {
-      window.scrollY > 200 ? this.scrolled = true : this.scrolled = false;
-    });
-  }
-}
+export class AppComponent { }

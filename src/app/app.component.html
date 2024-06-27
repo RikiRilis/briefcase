@@ -1,7 +1,10 @@
-<shared-header class="flex justify-center"></shared-header>
-<router-outlet>
-  <button *ngIf="scrolled" onclick="{window.scrollTo(0, 0)}" class="w-10 h-10 fixed bottom-4 right-4 rounded-xl bg-slate-950 shadow-lg flex items-center justify-center animate__animated animate__fadeIn animate__faster z-30">
-    <svg class="w-5 h-5 -rotate-90 text-cyan-600" width="800px" height="800px" viewBox="0 0 1024 1024"><path fill="currentColor" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"/></svg>
-  </button>
-</router-outlet>
-<shared-footer class="flex justify-center"></shared-footer>
+@defer (on viewport) {
+  <shared-header></shared-header>
+  <shared-scroll-top></shared-scroll-top>
+  <router-outlet></router-outlet>
+  <shared-footer></shared-footer>
+} @placeholder {
+  <shared-loading-page></shared-loading-page>
+} @loading(minimum 1s) {
+  <shared-loading-page></shared-loading-page>
+}

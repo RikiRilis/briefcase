@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { Projects } from '../../interfaces/projects.interface';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ProjectsService } from '../../../portfolio/services/projects.service';
+import { ProjectsService } from '../../services/projects.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'shared-project-modal',
@@ -19,9 +20,11 @@ import { ProjectsService } from '../../../portfolio/services/projects.service';
     }
   `
 })
-export class ProjectModalComponent implements OnInit {
+export class ProjectModalComponent implements OnInit, OnDestroy {
+  public id?: string;
   public index?: number;
   public project: Projects = {
+    id: '',
     title: '',
     description: '',
     imgUrl: '',
@@ -29,16 +32,23 @@ export class ProjectModalComponent implements OnInit {
     tecnologies: [],
     gitCodeUrl: ''
   };
+  public oldTitle?: string;
 
-  constructor(private location: Location, private route: ActivatedRoute) { }
+  constructor(private location: Location, private route: ActivatedRoute, private projectsService: ProjectsService, private title: Title) { }
 
   ngOnInit(): void {
+    this.oldTitle = this.title.getTitle();
     this.route.queryParamMap.subscribe(params => {
-      this.index = Number(params.get('index'));
-      this.project = ProjectsService[this.index]
+      this.id = params.get('id')?.toString();
+      this.index = Number(params.get('prop'));
+      this.project = this.projectsService.getProjets()[this.index];
+      this.title.setTitle(`Projects - ${this.project.title} | RikiRilis`);
     });
   }
 
+  ngOnDestroy(): void {
+    this.title.setTitle(this.oldTitle!);
+  }
   closePage(): void {
     this.location.back();
   }
