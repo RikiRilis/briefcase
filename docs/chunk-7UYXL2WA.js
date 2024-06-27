@@ -1,0 +1,1 @@
+import{a as t}from"./chunk-ZHUQGTPF.js";import"./chunk-G3TKVQRB.js";import"./chunk-2EY43PEM.js";import"./chunk-TGFSVU3D.js";import"./chunk-KTATGQNZ.js";import"./chunk-ONDFAEDV.js";var e=[{path:"",component:t,title:"RikiRilis"},{path:"**",redirectTo:"404"}];export{e as routes};
