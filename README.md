@@ -1,11 +1,22 @@
-# Rikelvi's Briefcase
+# RikiRilis' Web
 
 ## Deployed
-This briefcase (`portfolio`) was deployed in Vercel. [==> Visit <==](https://briefcase.rilisentertainment.xyz)
+
+This page (`RikiRilis`) was deployed in Vercel. [==> Visit <==](https://rikirilis.xyz)
 
 ## Technologies
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.3.
+This project was personalized with classes from [Tailwind CSS](https://tailwindcss.com/)
+This project have some animations using [Animate](https://animate.style/)
+
+## Dependencies
+
+[Tailwind CSS](https://tailwindcss.com/)
+[Del-CLI](https://www.npmjs.com/package/del-cli)
+[UUID](https://www.npmjs.com/package/uuid)
+[Copyfiles](https://www.npmjs.com/package/copyfiles)
+[Animate](https://animate.style/)
 
 ## Development server
 
